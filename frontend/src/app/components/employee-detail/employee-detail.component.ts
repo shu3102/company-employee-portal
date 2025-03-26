@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Employee } from '../../models/employee.model';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-employee-detail',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   standalone: true,
   templateUrl: './employee-detail.component.html',
   styleUrl: './employee-detail.component.css'
@@ -14,7 +14,7 @@ import { EmployeeService } from '../../services/employee.service';
 export class EmployeeDetailComponent implements OnInit{
   employee: Employee| null = null; 
 
-  constructor(private route: ActivatedRoute, private employeeService: EmployeeService) {}
+  constructor(private route: ActivatedRoute, private employeeService: EmployeeService,  private router: Router ) {}
 
   ngOnInit(): void {
     const employeeId = Number(this.route.snapshot.paramMap.get('id')); // Get ID from URL
@@ -27,5 +27,8 @@ export class EmployeeDetailComponent implements OnInit{
         console.error('Error fetching employee:', error);
       }
     );
+  }
+  onCancel(): void {
+    this.router.navigate(['/employees']);
   }
 }

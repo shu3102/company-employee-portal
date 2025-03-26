@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CompanyService } from '../../services/company.service';
 import { Company } from '../../models/company.model';
 import { CommonModule } from '@angular/common';
@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-company-details',
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule,RouterModule],
   templateUrl: './company-details.component.html',
   styleUrl: './company-details.component.css'
 })
@@ -17,7 +17,8 @@ export class CompanyDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private router: Router 
   ) {}
 
   ngOnInit(): void {
@@ -31,5 +32,7 @@ export class CompanyDetailsComponent {
       });
     }
   }
-
+  onCancel(): void {
+    this.router.navigate(['/companies']);
+  }
 }

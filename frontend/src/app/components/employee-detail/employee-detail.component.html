@@ -1,17 +1,28 @@
-<p>employee-detail works!</p>
-
-
-<div *ngIf="employee">
-    <h2>Employee Details</h2>
-    <p><strong>ID:</strong> {{ employee.id }}</p>
-    <p><strong>Name:</strong> {{ employee.name }}</p>
-    <p><strong>Designation:</strong> {{ employee.designation }}</p>
-    <p><strong>Salary:</strong> {{ employee.salary }}</p>
-    <p><strong>Date Of Join:</strong> {{ employee.dateOfJoin }}</p>
-    <p><strong>Company:</strong> {{ employee.company.name }}</p>
-
-</div>
-  <div *ngIf="!employee">
-    <p>Loading employee details...</p>
+<div *ngIf="employee; else loading" class="container mt-4">
+  <div class="card shadow-lg p-4">
+    <h2 class="text-center text-primary mb-4">Employee Details</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>ID:</strong> {{ employee.id }}</p>
+        <p><strong>Name:</strong> {{ employee.name }}</p>
+        <p><strong>Designation:</strong> {{ employee.designation }}</p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>Salary:</strong> {{ employee.salary }}</p>
+        <p><strong>Date Of Joining:</strong> {{ employee.dateOfJoin }}</p>
+        <p><strong>Company:</strong> {{ employee.company.name }}</p>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <button type="button" class="btn btn-primary px-4" (click)="onCancel()">Back to List</button>
+    </div>
   </div>
-  
+</div>
+
+<ng-template #loading>
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading employee details...</span>
+    </div>
+  </div>
+</ng-template>

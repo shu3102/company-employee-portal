@@ -1,17 +1,27 @@
-<p>company-details works!</p>
-
-
-<div *ngIf="company; else loading">
-    <h2>Company Details</h2>
-    <p><strong>ID:</strong> {{ company.id }}</p>
-    <p><strong>Name:</strong> {{ company.name }}</p>
-    <p><strong>City:</strong> {{ company.city }}</p>
-    <p><strong>State:</strong> {{ company.state }}</p>
-    <p><strong>Zip Code:</strong> {{ company.zipCode }}</p>
-    <a routerLink="/companies">Back to List</a>
+<div *ngIf="company; else loading" class="container mt-4">
+  <div class="card shadow-lg p-4">
+    <h2 class="text-center text-primary mb-4">Company Details</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>ID:</strong> {{ company.id }}</p>
+        <p><strong>Name:</strong> {{ company.name }}</p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>City:</strong> {{ company.city }}</p>
+        <p><strong>State:</strong> {{ company.state }}</p>
+        <p><strong>Zip Code:</strong> {{ company.zipCode }}</p>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <button type="button" class="btn btn-primary px-4" (click)="onCancel()">Back to List</button>
+    </div>
   </div>
-  
-  <ng-template #loading>
-    <p>Loading company details...</p>
-  </ng-template>
-  
+</div>
+
+<ng-template #loading>
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading company details...</span>
+    </div>
+  </div>
+</ng-template>
