@@ -65,13 +65,13 @@ public class CompanyRestController {
     }
 
     @DeleteMapping("/companies/{companyId}")
-    public String deleteCompanyById(@PathVariable Long companyId) {
+    public ResponseEntity<Void> deleteCompanyById(@PathVariable Long companyId) {
         Company theCompany = companyService.findById(companyId);
         if(theCompany == null) {
             throw new RuntimeException("theCompany id not found" + theCompany);
         }
         companyService.deleteById(companyId);
-        return "Deleted the emp id " + companyId;
+        return ResponseEntity.noContent().build();
     }
 
 }

@@ -77,13 +77,15 @@ public class EmployeeRestController {
 
 
     @DeleteMapping("/employees/{employeeId}")
-    public String deleteEmployeeById(@PathVariable Long employeeId) {
+    public ResponseEntity<Void> deleteEmployeeById(@PathVariable Long employeeId) {
         Employee theEmployee = employeeService.findById(employeeId);
         if(theEmployee == null) {
             throw new RuntimeException("Employee id not found" + theEmployee);
         }
         employeeService.deleteById(employeeId);
-        return "Deleted the emp id " + employeeId;
+//        return "Deleted the emp id " + employeeId;
+        return ResponseEntity.noContent().build();
     }
+
 
 }
