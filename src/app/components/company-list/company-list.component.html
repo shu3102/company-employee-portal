@@ -1,0 +1,28 @@
+<p class="title">Company List</p>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let company of companies">
+        <td>{{ company.name }}</td>
+        <td>{{ company.city }}</td>
+        <td>{{ company.state }}</td>
+        <td>{{ company.zipCode }}</td>
+        <td class="actions">
+          <a [routerLink]="['/companies', company.id]" class="btn view">View</a>
+          <a [routerLink]="['/update-company', company.id]" class="btn edit">Edit</a>
+          <button *ngIf="company.id !== undefined" class="btn delete" (click)="deleteCompany(company.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

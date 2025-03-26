@@ -1,0 +1,43 @@
+<p>employee-form works!</p>
+
+<div class="container mt-4">
+  <div class="card shadow-lg p-4">
+    <h2 class="text-center text-primary mb-4">Create Employee</h2>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      
+      <div class="mb-3">
+        <label for="name" class="form-label fw-bold">Name</label>
+        <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter name" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="designation" class="form-label fw-bold">Designation</label>
+        <input type="text" id="designation" formControlName="designation" class="form-control" placeholder="Enter designation" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="salary" class="form-label fw-bold">Salary</label>
+        <input type="number" id="salary" formControlName="salary" class="form-control" placeholder="Enter salary" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="dateOfJoin" class="form-label fw-bold">Date of Joining</label>
+        <input type="date" id="dateOfJoin" formControlName="dateOfJoin" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="company" class="form-label fw-bold">Company</label>
+        <select id="company" formControlName="company" class="form-select" required>
+          <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
+        </select>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary px-4">Create</button>
+        <button type="button" class="btn btn-secondary px-4" (click)="onCancel()">Cancel</button>
+      </div>
+
+    </form>
+  </div>
+</div>

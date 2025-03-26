@@ -1,0 +1,17 @@
+<p>company-details works!</p>
+
+
+<div *ngIf="company; else loading">
+    <h2>Company Details</h2>
+    <p><strong>ID:</strong> {{ company.id }}</p>
+    <p><strong>Name:</strong> {{ company.name }}</p>
+    <p><strong>City:</strong> {{ company.city }}</p>
+    <p><strong>State:</strong> {{ company.state }}</p>
+    <p><strong>Zip Code:</strong> {{ company.zipCode }}</p>
+    <a routerLink="/companies">Back to List</a>
+  </div>
+  
+  <ng-template #loading>
+    <p>Loading company details...</p>
+  </ng-template>
+  

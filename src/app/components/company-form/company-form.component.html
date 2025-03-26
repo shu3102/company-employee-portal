@@ -1,0 +1,36 @@
+<p class="title">Company Form</p>
+
+<div class="container mt-4">
+  <div class="card shadow-lg p-4">
+    <h2 class="text-center text-primary mb-4">Create Company</h2>
+
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+      
+      <div class="mb-3">
+        <label for="name" class="form-label fw-bold">Company Name:</label>
+        <input id="name" formControlName="name" type="text" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="city" class="form-label fw-bold">City:</label>
+        <input id="city" formControlName="city" type="text" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="state" class="form-label fw-bold">State:</label>
+        <input id="state" formControlName="state" type="text" class="form-control">
+      </div>
+
+      <div class="mb-3">
+        <label for="zipCode" class="form-label fw-bold">Zip Code:</label>
+        <input id="zipCode" formControlName="zipCode" type="text" class="form-control">
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary px-4">Submit</button>
+        <button type="button" class="btn btn-secondary px-4" (click)="onCancel()">Cancel</button>
+      </div>
+
+    </form>
+  </div>
+</div>
